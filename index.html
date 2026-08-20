@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio - John Kristan Dominguez</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!--NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            MY PORTFOLIO
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="#home">HOME</a>
+            </li>
+
+            <li>
+                <a href="#quiz">QUIZ</a>
+            </li>
+
+            <li>
+                <a href="#laboratory">LABORATORY</a>
+            </li>
+
+            <li>
+                <a href="#exam">EXAM</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!--HOME-->
+
+    <section class="home" id="home">
+
+        <div class="profile">
+
+            <div class="profile-image">
+
+                <img src="profile.jpg.jpg" alt="John Kristan Dominguez">
+            </div>
+
+
+            <div class="profile-info">
+
+                <h1>John Kristan Dominguez</h1>
+
+                <h2>BSIT-3B</h2>
+
+                <p>Hello! I’m John Kristan Dominguez,BSIT-3B student who is passionate about learning programming and exploring new technologies. As I continue my journey in Information Technology, I’m developing my skills through different activities, projects, and hands-on experiences. Each challenge helps me learn, improve, and grow as a future IT professional. Welcome to my portfolio!</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--QUIZ-->
+
+    <section class="content" id="quiz">
+
+        <h1>
+            QUIZ
+        </h1>
+
+        <p>My quizzes</p>
+
+
+        <div class="cards">
+
+
+            <!--QUIZ 1-->
+
+            <div class="card">
+
+                <div class="quiz-preview">
+
+                    <img id="quiz1Image" class="quiz-image" alt="Quiz 1">
+
+                    <p  id="quiz1Message" class="no-quiz"> No quiz uploaded yet. </p>
+
+                </div>
+
+
+                <h2>Quiz 1</h2>
+                <div class="upload-form">
+
+                    <label for="quiz1File">
+                        Upload your Quiz 1:
+                    </label>
+
+                    <input type="file" id="quiz1File" accept="image/*">
+
+                    <button type="button" class="upload-button" onclick="uploadQuiz('quiz1')"> Upload Quiz 1 </button>
+
+
+                    <button type="button" class="delete-button" onclick="deleteQuiz('quiz1')"> Delete Quiz 1</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!--QUIZ 2-->
+
+            <div class="card">
+
+                <div class="quiz-preview">
+
+                    <img id="quiz2Image" class="quiz-image" alt="Quiz 2" >
+
+                    <p id="quiz2Message" class="no-quiz">No quiz uploaded yet.</p>
+
+                </div>
+
+
+                <h2> Quiz 2 </h2>
+
+                <div class="upload-form">
+
+                    <label for="quiz2File">Upload your Quiz 2: </label>
+
+                    <input type="file" id="quiz2File" accept="image/*">
+
+                    <button type="button" class="upload-button" onclick="uploadQuiz('quiz2')"> Upload Quiz 2</button>
+
+
+                    <button type="button" class="delete-button" onclick="deleteQuiz('quiz2')">Delete Quiz 2 </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!--QUIZ 3-->
+
+            <div class="card">
+
+                <div class="quiz-preview">
+
+                    <img id="quiz3Image" class="quiz-image" alt="Quiz 3">
+
+                    <p id="quiz3Message" class="no-quiz">No quiz uploaded yet.</p>
+
+                </div>
+
+
+                <h2>
+                    Quiz 3
+                </h2>
+
+                <div class="upload-form">
+
+                    <label for="quiz3File">
+                        Upload your Quiz 3:
+                    </label>
+
+                    <input type="file" id="quiz3File" accept="image/*" >
+
+                    <button type="button" class="upload-button" onclick="uploadQuiz('quiz3')"> Upload Quiz 3 </button>
+                    <button type="button" class="delete-button" onclick="deleteQuiz('quiz3')" >Delete Quiz 3 </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- LABORATORY-->
+
+    <section class="content" id="laboratory">
+
+        <h1> LABORATORY </h1>
+
+        <p> My laboratory activities. </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h2> Laboratory 1 </h2>
+            </div>
+
+
+            <div class="card">
+
+                <h2> Laboratory 2 </h2>
+            </div>
+
+
+            <div class="card">
+
+                <h2> Laboratory 3 </h2>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--EXAM-->
+
+    <section class="content" id="exam">
+
+        <h1> EXAM </h1>
+
+        <p>My examination outputs.</p>
+
+
+        <div class="cards">
+
+            <div class="card">
+                <h2> Prelim Exam</h2>
+
+                <p>
+                    Prelim examination output.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Midterm Exam</h2>
+
+                <p>Midterm examination output.</p>
+
+            </div>
+
+
+            <div class="card">
+                <h2>
+                    Final Exam
+                </h2>
+
+                 <p>Final examination output.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--FOOTER-->
+
+    <footer>
+
+        © 2026 John Kristan Dominguez | My Portfolio
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
