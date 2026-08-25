@@ -1,4 +1,4 @@
-const DB_NAME = "CarlPortfolioDB";
+const DB_NAME = "KrisPortfolioDB";
 
 const DB_VERSION = 1;
 
