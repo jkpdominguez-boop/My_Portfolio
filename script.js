@@ -1,446 +1,112 @@
-const DB_NAME = "KrisPortfolioDB";
+/* =========================
+   QUIZ UPLOAD
+========================= */
 
-const DB_VERSION = 1;
+function uploadQuiz(quizNumber) {
 
-const STORE_NAME = "quizzes";
+    const fileInput = document.getElementById(quizNumber + "File");
+    const image = document.getElementById(quizNumber + "Image");
+    const message = document.getElementById(quizNumber + "Message");
 
-
-
-/*OPEN DATABASE*/
-
-function openDatabase() {
-
-    return new Promise((resolve, reject) => {
-
-        const request =
-            indexedDB.open(
-                DB_NAME,
-                DB_VERSION
-            );
-
-
-        request.onupgradeneeded = function (event) {
-
-            const database =
-                event.target.result;
-
-
-            if (!database.objectStoreNames.contains(STORE_NAME)) {
-
-                database.createObjectStore(
-                    STORE_NAME
-                );
-
-            }
-
-        };
-
-
-        request.onsuccess = function () {
-
-            resolve(request.result);
-
-        };
-
-
-        request.onerror = function () {
-
-            reject(request.error);
-
-        };
-
-    });
-
-}
-
-
-
-/* SAVE QUIZ */
-
-async function saveQuiz(
-    quizId,
-    imageFile
-) {
-
-    const database =
-        await openDatabase();
-
-
-    return new Promise(
-        (resolve, reject) => {
-
-            const transaction =
-                database.transaction(
-                    STORE_NAME,
-                    "readwrite"
-                );
-
-
-            const store =
-                transaction.objectStore(
-                    STORE_NAME
-                );
-
-
-            const request =
-                store.put(
-                    imageFile,
-                    quizId
-                );
-
-
-            request.onsuccess =
-                function () {
-
-                    resolve();
-
-                };
-
-
-            request.onerror =
-                function () {
-
-                    reject(
-                        request.error
-                    );
-
-                };
-
-        }
-    );
-
-}
-
-
-
-/*GET QUIZ*/
-
-async function getQuiz(quizId) {
-
-    const database =
-        await openDatabase();
-
-
-    return new Promise(
-        (resolve, reject) => {
-
-            const transaction =
-                database.transaction(
-                    STORE_NAME,
-                    "readonly"
-                );
-
-
-            const store =
-                transaction.objectStore(
-                    STORE_NAME
-                );
-
-
-            const request =
-                store.get(quizId);
-
-
-            request.onsuccess =
-                function () {
-
-                    resolve(
-                        request.result
-                    );
-
-                };
-
-
-            request.onerror =
-                function () {
-
-                    reject(
-                        request.error
-                    );
-
-                };
-
-        }
-    );
-
-}
-
-
-
-/*DELETE QUIZ*/
-
-async function removeQuiz(quizId) {
-
-    const database =
-        await openDatabase();
-
-
-    return new Promise(
-        (resolve, reject) => {
-
-            const transaction =
-                database.transaction(
-                    STORE_NAME,
-                    "readwrite"
-                );
-
-
-            const store =
-                transaction.objectStore(
-                    STORE_NAME
-                );
-
-
-            const request =
-                store.delete(quizId);
-
-
-            request.onsuccess =
-                function () {
-
-                    resolve();
-
-                };
-
-
-            request.onerror =
-                function () {
-
-                    reject(
-                        request.error
-                    );
-
-                };
-
-        }
-    );
-
-}
-
-
-
-/*UPLOAD QUIZ*/
-
-async function uploadQuiz(quizId) {
-
-    const fileInput =
-        document.getElementById(
-            quizId + "File"
-        );
-
-
-    if (!fileInput.files.length) {
-
-        alert(
-            "Please choose an image first."
-        );
-
+    if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Please choose an image first.");
         return;
-
     }
 
-
-    const file =
-        fileInput.files[0];
-
-
+    const file = fileInput.files[0];
 
     if (!file.type.startsWith("image/")) {
-
-        alert(
-            "Please choose an image file."
-        );
-
+        alert("Please select an image file.");
         return;
-
-    }
-    const maxSize =
-        50 * 1024 * 1024;
-
-
-    if (file.size > maxSize) {
-
-        alert(
-            "The image is too large. " +
-            "Please choose an image smaller than 50MB."
-        );
-
-        return;
-
     }
 
+    const reader = new FileReader();
 
-    try {
+    reader.onload = function(event) {
 
-        await saveQuiz(
-            quizId,
-            file
-        );
+        image.src = event.target.result;
 
+        image.classList.add("show");
 
-        alert(
-            "Quiz uploaded successfully!"
-        );
+        message.style.display = "none";
+    };
 
-
-        fileInput.value = "";
-
-
-        await displayQuiz(
-            quizId
-        );
-
-
-    }
-    catch (error) {
-
-        console.error(error);
-
-
-        alert(
-            "Something went wrong while saving the quiz."
-        );
-
-    }
-
-}
-
-/*DISPLAY QUIZ*/
-
-async function displayQuiz(quizId) {
-
-    try {
-
-        const file =
-            await getQuiz(
-                quizId
-            );
-
-
-        const image =
-            document.getElementById(
-                quizId + "Image"
-            );
-
-
-        const message =
-            document.getElementById(
-                quizId + "Message"
-            );
-
-
-        if (!file) {
-
-            image.style.display =
-                "none";
-
-            message.style.display =
-                "block";
-
-            return;
-
-        }
-        const imageURL =
-            URL.createObjectURL(
-                file
-            );
-
-
-        image.src =
-            imageURL;
-
-
-        image.style.display =
-            "block";
-
-
-        message.style.display =
-            "none";
-
-        image.onclick =
-            function () {
-
-                window.open(
-                    imageURL,
-                    "_blank"
-                );
-
-            };
-
-    }
-    catch (error) {
-
-        console.error(
-            "Error displaying quiz:",
-            error
-        );
-
-    }
-
+    reader.readAsDataURL(file);
 }
 
 
+/* =========================
+   DELETE QUIZ
+========================= */
 
-/*DELETE QUIZ BUTTON*/
+function deleteQuiz(quizNumber) {
 
-async function deleteQuiz(quizId) {
+    const fileInput = document.getElementById(quizNumber + "File");
+    const image = document.getElementById(quizNumber + "Image");
+    const message = document.getElementById(quizNumber + "Message");
 
-    const confirmed =
-        confirm(
-            "Are you sure you want to delete this quiz?"
-        );
+    image.src = "";
 
+    image.classList.remove("show");
 
-    if (!confirmed) {
+    message.style.display = "block";
 
-        return;
-
-    }
-
-
-    try {
-
-        await removeQuiz(
-            quizId
-        );
-
-
-        alert(
-            "Quiz deleted successfully."
-        );
-
-
-        await displayQuiz(
-            quizId
-        );
-
-    }
-    catch (error) {
-
-        console.error(error);
-
-
-        alert(
-            "Unable to delete the quiz."
-        );
-
-    }
-
+    fileInput.value = "";
 }
 
 
+/* =========================
+   LABORATORY UPLOAD
+========================= */
 
-/*LOAD QUIZZES WHEN PAGE OPENS*/
+function uploadLab(labNumber) {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    const fileInput = document.getElementById(labNumber + "File");
+    const image = document.getElementById(labNumber + "Image");
+    const message = document.getElementById(labNumber + "Message");
 
-        displayQuiz("quiz1");
-
-        displayQuiz("quiz2");
-
-        displayQuiz("quiz3");
-
+    if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Please choose an image first.");
+        return;
     }
-);
+
+    const file = fileInput.files[0];
+
+    if (!file.type.startsWith("image/")) {
+        alert("Please select an image file.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+
+        image.src = event.target.result;
+
+        image.classList.add("show");
+
+        message.style.display = "none";
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* =========================
+   DELETE LABORATORY
+========================= */
+
+function deleteLab(labNumber) {
+
+    const fileInput = document.getElementById(labNumber + "File");
+    const image = document.getElementById(labNumber + "Image");
+    const message = document.getElementById(labNumber + "Message");
+
+    image.src = "";
+
+    image.classList.remove("show");
+
+    message.style.display = "block";
+
+    fileInput.value = "";
+}
