@@ -1,112 +1,246 @@
-/* =========================
-   QUIZ UPLOAD
-========================= */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
-function uploadQuiz(quizNumber) {
+const menuBtn = document.getElementById("menuBtn");
 
-    const fileInput = document.getElementById(quizNumber + "File");
-    const image = document.getElementById(quizNumber + "Image");
-    const message = document.getElementById(quizNumber + "Message");
+const navMenu = document.getElementById("navMenu");
 
-    if (!fileInput.files || fileInput.files.length === 0) {
-        alert("Please choose an image first.");
-        return;
-    }
 
-    const file = fileInput.files[0];
+if (menuBtn) {
 
-    if (!file.type.startsWith("image/")) {
-        alert("Please select an image file.");
-        return;
-    }
+    menuBtn.addEventListener("click", function () {
 
-    const reader = new FileReader();
+        navMenu.classList.toggle("open");
 
-    reader.onload = function(event) {
+    });
 
-        image.src = event.target.result;
-
-        image.classList.add("show");
-
-        message.style.display = "none";
-    };
-
-    reader.readAsDataURL(file);
 }
 
 
-/* =========================
-   DELETE QUIZ
-========================= */
+/* =====================================================
+   CLOSE MOBILE MENU WHEN CLICKING LINK
+===================================================== */
 
-function deleteQuiz(quizNumber) {
+const navLinks =
+    document.querySelectorAll("#navMenu a");
 
-    const fileInput = document.getElementById(quizNumber + "File");
-    const image = document.getElementById(quizNumber + "Image");
-    const message = document.getElementById(quizNumber + "Message");
 
-    image.src = "";
+navLinks.forEach(function (link) {
 
-    image.classList.remove("show");
+    link.addEventListener("click", function () {
 
-    message.style.display = "block";
+        navMenu.classList.remove("open");
 
-    fileInput.value = "";
+    });
+
+});
+
+
+/* =====================================================
+   IMAGE MODAL
+===================================================== */
+
+const modal =
+    document.getElementById("modal");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalContent =
+    document.getElementById("modalContent");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+
+function openImage(imagePath, title) {
+
+    modalTitle.textContent = title;
+
+    modalContent.innerHTML = `
+        <img
+            src="${imagePath}"
+            alt="${title}"
+            class="modal-image"
+        >
+    `;
+
+    modal.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
 }
 
 
-/* =========================
-   LABORATORY UPLOAD
-========================= */
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
 
-function uploadLab(labNumber) {
+if (closeModal) {
 
-    const fileInput = document.getElementById(labNumber + "File");
-    const image = document.getElementById(labNumber + "Image");
-    const message = document.getElementById(labNumber + "Message");
+    closeModal.addEventListener("click", function () {
 
-    if (!fileInput.files || fileInput.files.length === 0) {
-        alert("Please choose an image first.");
-        return;
+        closeTheModal();
+
+    });
+
+}
+
+
+function closeTheModal() {
+
+    modal.classList.remove("show");
+
+    modalContent.innerHTML = "";
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =====================================================
+   CLOSE WHEN CLICKING OUTSIDE
+===================================================== */
+
+if (modal) {
+
+    modal.addEventListener("click", function (event) {
+
+        if (event.target === modal) {
+
+            closeTheModal();
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+        closeTheModal();
+
     }
 
-    const file = fileInput.files[0];
+});
 
-    if (!file.type.startsWith("image/")) {
-        alert("Please select an image file.");
-        return;
-    }
 
-    const reader = new FileReader();
+/* =====================================================
+   MESSAGE
+===================================================== */
 
-    reader.onload = function(event) {
+function showMessage(message) {
 
-        image.src = event.target.result;
+    modalTitle.textContent = "Portfolio";
 
-        image.classList.add("show");
+    modalContent.innerHTML = `
+        <p class="message-text">
+            ${message}
+        </p>
+    `;
 
-        message.style.display = "none";
-    };
+    modal.classList.add("show");
 
-    reader.readAsDataURL(file);
+    document.body.style.overflow = "hidden";
+
 }
 
 
-/* =========================
-   DELETE LABORATORY
-========================= */
+/* =====================================================
+   3D CARD TILT
+===================================================== */
 
-function deleteLab(labNumber) {
+const cards =
+    document.querySelectorAll(".tilt-card");
 
-    const fileInput = document.getElementById(labNumber + "File");
-    const image = document.getElementById(labNumber + "Image");
-    const message = document.getElementById(labNumber + "Message");
 
-    image.src = "";
+cards.forEach(function (card) {
 
-    image.classList.remove("show");
+    card.addEventListener("mousemove", function (event) {
 
-    message.style.display = "block";
+        const rect =
+            card.getBoundingClientRect();
 
-    fileInput.value = "";
-}
+        const x =
+            event.clientX - rect.left;
+
+        const y =
+            event.clientY - rect.top;
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+        const rotateX =
+            ((y - centerY) / centerY) * -5;
+
+        const rotateY =
+            ((x - centerX) / centerX) * 5;
+
+        card.style.transform =
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-5px)`;
+
+    });
+
+
+    card.addEventListener("mouseleave", function () {
+
+        card.style.transform =
+            "perspective(900px) rotateX(0deg) rotateY(0deg)";
+
+    });
+
+});
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(
+        ".portfolio-card, .profile-card, .about-text, .contact-card"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+revealElements.forEach(function (element) {
+
+    observer.observe(element);
+
+});

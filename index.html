@@ -2,362 +2,1017 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Portfolio - John Kristan Dominguez</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My 3D Portfolio - John Kristan Dominguez</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
 
-    <nav>
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-        <div class="logo">
-            MY PORTFOLIO
-        </div>
+<header class="navbar">
 
-        <ul>
+    <div class="logo">
+        JKD<span>3D</span>
+    </div>
 
-            <li>
-                <a href="#home">HOME</a>
-            </li>
+    <button
+        class="menu-btn"
+        id="menuBtn"
+    >
+        ☰
+    </button>
 
-            <li>
-                <a href="#quiz">QUIZ</a>
-            </li>
+    <nav id="navMenu">
 
-            <li>
-                <a href="#laboratory">LABORATORY</a>
-            </li>
+        <a href="#home">Home</a>
 
-            <li>
-                <a href="#exam">EXAM</a>
-            </li>
+        <a href="#about">About</a>
 
-        </ul>
+        <a href="#quiz">Quiz</a>
+
+        <a href="#laboratory">Laboratory</a>
+
+        <a href="#exam">Exam</a>
+
+        <a href="#contact">Contact</a>
 
     </nav>
 
+</header>
 
-    <!-- =========================
-         HOME
-    ========================== -->
 
-    <section class="home" id="home">
 
-        <div class="profile">
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-content">
+
+        <p class="tag">
+            WELCOME TO MY PORTFOLIO
+        </p>
+
+        <h1>
+            JOHN KRISTAN
+            <br>
+            <span>DOMINGUEZ</span>
+        </h1>
+
+        <p class="intro">
+
+            Welcome to my 3D student portfolio.
+            This website contains my quizzes,
+            laboratory activities, examinations,
+            projects, and learning progress.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#quiz"
+                class="btn"
+            >
+                View My Work
+            </a>
+
+            <a
+                href="#about"
+                class="btn outline"
+            >
+                About Me
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 3D CUBE -->
+
+    <div class="cube-wrap">
+
+        <div class="cube">
+
+            <div class="face front">
+                HTML
+            </div>
+
+            <div class="face back">
+                CSS
+            </div>
+
+            <div class="face right">
+                JS
+            </div>
+
+            <div class="face left">
+                IT
+            </div>
+
+            <div class="face top">
+                CODE
+            </div>
+
+            <div class="face bottom">
+                3D
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    class="section"
+    id="about"
+>
+
+    <div class="section-title">
+
+        <p>ABOUT ME</p>
+
+        <h2>
+            My <span>Profile</span>
+        </h2>
+
+    </div>
+
+
+    <div class="about-grid">
+
+
+        <!-- PROFILE -->
+
+        <div class="profile-card glass">
 
             <div class="profile-image">
 
-                <img src="Profile.jpg" alt="Profile Image" class="profile-img">
+                <img
+                    src="Profile.jpg"
+                    alt="John Kristan Dominguez"
+                >
 
             </div>
 
+            <h3>
+                John Kristan Dominguez
+            </h3>
 
-            <div class="profile-info">
+            <p>
+                IT Student
+            </p>
 
-                <h1>
-                    John Kristan Dominguez
-                </h1>
+        </div>
 
-                <h2>
-                    BSIT-3B
-                </h2>
 
-                <p>
-                    Hello! I’m John Kristan Dominguez, a BSIT-3B student
-                    who is passionate about learning programming and
-                    exploring new technologies. As I continue my journey
-                    in Information Technology, I’m developing my skills
-                    through different activities, projects, and hands-on
-                    experiences. Each challenge helps me learn, improve,
-                    and grow as a future IT professional. Welcome to my
-                    portfolio!
-                </p>
+
+        <!-- ABOUT TEXT -->
+
+        <div class="about-text">
+
+            <h3>
+                Hello! I'm Kristan.
+            </h3>
+
+            <p>
+
+                I am an Information Technology student
+                interested in web development,
+                programming, system development,
+                and modern technology.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                This portfolio showcases my school
+                activities, quizzes, laboratory
+                exercises, and examinations.
+
+            </p>
+
+
+            <div class="skills">
+
+                <span>HTML</span>
+
+                <span>CSS</span>
+
+                <span>JavaScript</span>
+
+                <span>C#</span>
+
+                <span>Java</span>
+
+                <span>C++</span>
+
+                <span>Bootstrap</span>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         QUIZ
-    ========================== -->
 
-    <section class="content" id="quiz">
+<!-- =====================================================
+     QUIZ
+===================================================== -->
 
-        <h1>QUIZ</h1>
+<section
+    class="section dark-section"
+    id="quiz"
+>
 
-        <p>
-            My quizzes.
-        </p>
+    <div class="section-title">
 
+        <p>ACADEMIC ACTIVITIES</p>
 
-        <div class="cards">
+        <h2>
+            My <span>Quizzes</span>
+        </h2>
 
-            <!-- QUIZ 1 -->
-
-            <div class="card">
-
-                <div class="quiz-preview">
-
-                    <img src="Quiz1.png" class="quiz-image" alt="Quiz1">
-
-                </div>
-
-                <h2>
-                    Quiz 1
-                </h2>
-
-            </div>
+    </div>
 
 
-            <!-- QUIZ 2 -->
+    <div class="card-grid">
 
-            <div class="card">
 
-                <div class="quiz-preview">
-                    <img src="Quiz2.png" class="quiz-image" alt="Quiz2">
+        <!-- QUIZ 1 -->
 
-                </div>
+        <article class="portfolio-card tilt-card">
 
-                <h2>
-                    Quiz 2
-                </h2>
+            <div
+                class="quiz-image"
+                onclick="openImage('Quiz1.png', 'Quiz 1')"
+            >
+
+                <img
+                    src="Quiz1.png"
+                    alt="Quiz 1"
+                >
 
             </div>
 
+            <div class="number">
+                01
+            </div>
 
-            <!-- QUIZ 3 -->
+            <h3>
+                Quiz 1
+            </h3>
 
-            <div class="card">
+            <p>
+                My first quiz activity.
+            </p>
 
-                <div class="quiz-preview">
+            <button
+                class="view-btn"
+                onclick="openImage('Quiz1.png', 'Quiz 1')"
+            >
+                View Quiz
+            </button>
 
-                    <img src="Quiz3.png" class="quiz-image" alt="Quiz3">
+        </article>
 
-                </div>
 
-                <h2>
-                    Quiz 3
-                </h2>
+
+        <!-- QUIZ 2 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div
+                class="quiz-image"
+                onclick="openImage('Quiz2.png', 'Quiz 2')"
+            >
+
+                <img
+                    src="Quiz2.png"
+                    alt="Quiz 2"
+                >
 
             </div>
 
-        </div>
+            <div class="number">
+                02
+            </div>
+
+            <h3>
+                Quiz 2
+            </h3>
+
+            <p>
+                My second quiz activity.
+            </p>
+
+            <button
+                class="view-btn"
+                onclick="openImage('Quiz2.png', 'Quiz 2')"
+            >
+                View Quiz
+            </button>
+
+        </article>
+
+
+
+        <!-- QUIZ 3 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div
+                class="quiz-image"
+                onclick="openImage('Quiz3.png', 'Quiz 3')"
+            >
+
+                <img
+                    src="Quiz3.png"
+                    alt="Quiz 3"
+                >
+
+            </div>
+
+            <div class="number">
+                03
+            </div>
+
+            <h3>
+                Quiz 3
+            </h3>
+
+            <p>
+                My third quiz activity.
+            </p>
+
+            <button
+                class="view-btn"
+                onclick="openImage('Quiz3.png', 'Quiz 3')"
+            >
+                View Quiz
+            </button>
+
+        </article>
+
+
 
         <!-- QUIZ 4 -->
 
-        <div class="card">
+        <article class="portfolio-card tilt-card">
 
-            <div class="quiz-preview">
+            <div
+                class="quiz-image"
+                onclick="openImage('Quiz4.png', 'Quiz 4')"
+            >
 
-                <img src="Quiz4.png" class="quiz-image" alt="Quiz4">
+                <img
+                    src="Quiz4.png"
+                    alt="Quiz 4"
+                >
 
             </div>
 
-            <h2>
+            <div class="number">
+                04
+            </div>
+
+            <h3>
                 Quiz 4
-            </h2>
+            </h3>
 
-        </div>
+            <p>
+                My fourth quiz activity.
+            </p>
 
-        </div>
+            <button
+                class="view-btn"
+                onclick="openImage('Quiz4.png', 'Quiz 4')"
+            >
+                View Quiz
+            </button>
+
+        </article>
+
+
+
         <!-- QUIZ 5 -->
 
-        <div class="card">
+        <article class="portfolio-card tilt-card">
 
-            <div class="quiz-preview">
+            <div
+                class="quiz-image"
+                onclick="openImage('Quiz5.png', 'Quiz 5')"
+            >
 
-                <img src="Quiz5.png" class="quiz-image" alt="Quiz5">
+                <img
+                    src="Quiz5.png"
+                    alt="Quiz 5"
+                >
 
             </div>
 
-            <h2>
+            <div class="number">
+                05
+            </div>
+
+            <h3>
                 Quiz 5
-            </h2>
+            </h3>
 
-        </div>
+            <p>
+                My fifth quiz activity.
+            </p>
 
-        </div>
+            <button
+                class="view-btn"
+                onclick="openImage('Quiz5.png', 'Quiz 5')"
+            >
+                View Quiz
+            </button>
+
+        </article>
 
 
-        <!-- LONG QUIZ -->
 
-        <div class="card">
+        <!-- QUIZ 6 -->
 
-            <div class="quiz-preview">
+        <article class="portfolio-card tilt-card">
 
-                <img src="LONG_QUIZ.png" class="quiz-image" alt="LONG QUIZ">
+            <div
+                class="quiz-image"
+                onclick="openImage('LONG_QUIZ.png', 'Quiz 6')"
+            >
+
+                <img
+                    src="LONG_QUIZ.png"
+                    alt="Quiz 6"
+                >
 
             </div>
 
-            <h2>
-                LONG QUIZ
-            </h2>
+            <div class="number">
+                06
+            </div>
 
-        </div>
+            <h3>
+                Quiz 6
+            </h3>
 
-        </div>
+            <p>
+                Long quiz / Quiz 6 activity.
+            </p>
 
-    </section>
+            <button
+                class="view-btn"
+                onclick="openImage('LONG_QUIZ.png', 'Quiz 6')"
+            >
+                View Quiz
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         LABORATORY
-    ========================== -->
 
-    <section class="content" id="laboratory">
+<!-- =====================================================
+     LABORATORY
+===================================================== -->
 
-        <h1>
-            LABORATORY
-        </h1>
+<section
+    class="section"
+    id="laboratory"
+>
+
+    <div class="section-title">
+
+        <p>LABORATORY ACTIVITIES</p>
+
+        <h2>
+            My <span>Laboratories</span>
+        </h2>
+
+    </div>
+
+
+    <div class="card-grid">
+
+
+        <!-- LAB 1 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                LAB 01
+
+            </div>
+
+            <div class="number">
+                01
+            </div>
+
+            <h3>
+                Laboratory 1
+            </h3>
+
+            <p>
+                Laboratory 1 rubric and activity file.
+            </p>
+
+            <a
+                href="files/lab1-rubric.pdf"
+                target="_blank"
+                class="view-btn"
+            >
+                📄 Open Laboratory 1
+            </a>
+
+        </article>
+
+
+
+        <!-- LAB 2 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                LAB 02
+
+            </div>
+
+            <div class="number">
+                02
+            </div>
+
+            <h3>
+                Laboratory 2
+            </h3>
+
+            <p>
+                Laboratory 2 activity.
+            </p>
+
+            <a
+                href="#"
+                class="view-btn"
+                onclick="showMessage('Laboratory 2 file will be added here.')"
+            >
+                📄 View Laboratory 2
+            </a>
+
+        </article>
+
+
+
+        <!-- LAB 3 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div
+                class="quiz-image"
+                onclick="openImage('Lab3.png', 'Laboratory 3')"
+            >
+
+                <img
+                    src="Lab3.png"
+                    alt="Laboratory 3"
+                >
+
+            </div>
+
+            <div class="number">
+                03
+            </div>
+
+            <h3>
+                Laboratory 3
+            </h3>
+
+            <p>
+                Laboratory 3 activity.
+            </p>
+
+            <button
+                class="view-btn"
+                onclick="openImage('Lab3.png', 'Laboratory 3')"
+            >
+                🖼️ View Laboratory 3
+            </button>
+
+        </article>
+
+
+
+        <!-- LAB 4 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                LAB 04
+
+            </div>
+
+            <div class="number">
+                04
+            </div>
+
+            <h3>
+                Laboratory 4
+            </h3>
+
+            <p>
+                Laboratory 4 activity.
+            </p>
+
+            <a
+                href="#"
+                class="view-btn"
+                onclick="showMessage('Laboratory 4 file will be added here.')"
+            >
+                📄 View Laboratory 4
+            </a>
+
+        </article>
+
+
+
+        <!-- LAB 5 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                LAB 05
+
+            </div>
+
+            <div class="number">
+                05
+            </div>
+
+            <h3>
+                Laboratory 5
+            </h3>
+
+            <p>
+                Laboratory 5 activity.
+            </p>
+
+            <a
+                href="#"
+                class="view-btn"
+                onclick="showMessage('Laboratory 5 file will be added here.')"
+            >
+                📄 View Laboratory 5
+            </a>
+
+        </article>
+
+
+
+        <!-- LAB 6 -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                LAB 06
+
+            </div>
+
+            <div class="number">
+                06
+            </div>
+
+            <h3>
+                Laboratory 6
+            </h3>
+
+            <p>
+                Laboratory 6 activity.
+            </p>
+
+            <a
+                href="#"
+                class="view-btn"
+                onclick="showMessage('Laboratory 6 file will be added here.')"
+            >
+                📄 View Laboratory 6
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXAM
+===================================================== -->
+
+<section
+    class="section dark-section"
+    id="exam"
+>
+
+    <div class="section-title">
+
+        <p>EXAMINATIONS</p>
+
+        <h2>
+            My <span>Exams</span>
+        </h2>
+
+    </div>
+
+
+    <div class="card-grid">
+
+
+        <!-- PRELIM -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div
+                class="quiz-image"
+                onclick="openImage('Prelim Exam.jpg', 'Prelim Exam')"
+            >
+
+                <img
+                    src="Prelim Exam.jpg"
+                    alt="Prelim Exam"
+                >
+
+            </div>
+
+            <div class="number">
+                01
+            </div>
+
+            <h3>
+                Prelim Exam
+            </h3>
+
+            <p>
+                My Prelim examination.
+            </p>
+
+            <button
+                class="view-btn"
+                onclick="openImage('Prelim Exam.jpg', 'Prelim Exam')"
+            >
+                View Exam
+            </button>
+
+        </article>
+
+
+
+        <!-- MIDTERM -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                MIDTERM
+
+            </div>
+
+            <div class="number">
+                02
+            </div>
+
+            <h3>
+                Midterm Exam
+            </h3>
+
+            <p>
+                My Midterm examination.
+            </p>
+
+            <button
+                class="view-btn"
+                onclick="showMessage('Midterm Exam file will be added here.')"
+            >
+                View Exam
+            </button>
+
+        </article>
+
+
+
+        <!-- PRE-FINAL -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                PRE-FINAL
+
+            </div>
+
+            <div class="number">
+                03
+            </div>
+
+            <h3>
+                Pre-Final Exam
+            </h3>
+
+            <p>
+                My Pre-Final examination.
+            </p>
+
+            <button
+                class="view-btn"
+                onclick="showMessage('Pre-Final Exam file will be added here.')"
+            >
+                View Exam
+            </button>
+
+        </article>
+
+
+
+        <!-- FINAL -->
+
+        <article class="portfolio-card tilt-card">
+
+            <div class="lab-placeholder">
+
+                FINAL
+
+            </div>
+
+            <div class="number">
+                04
+            </div>
+
+            <h3>
+                Final Exam
+            </h3>
+
+            <p>
+                My Final examination.
+            </p>
+
+            <button
+                class="view-btn"
+                onclick="showMessage('Final Exam file will be added here.')"
+            >
+                View Exam
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    class="section contact"
+    id="contact"
+>
+
+    <div class="section-title">
+
+        <p>GET IN TOUCH</p>
+
+        <h2>
+            Contact <span>Me</span>
+        </h2>
+
+    </div>
+
+
+    <div class="contact-card glass">
+
+        <h3>
+            Thank You for Visiting!
+        </h3>
 
         <p>
-            MY laboratory outputs.
+
+            Thank you for checking out my
+            3D portfolio and academic work.
+
         </p>
 
+        <a
+            href="#home"
+            class="btn"
+        >
+            Back to Top
+        </a>
 
-        <div class="cards">
+    </div>
 
-            <!-- LABORATORY 1 -->
-
-            <div class="card">
-
-                <div class="quiz-preview">
-
-                    <a href="files/lab1-rubric.pdf" download>Download PDF</a>
-
-                </div>
-
-                <h2>
-                    Laboratory 1
-                </h2>
-
-            </div>
+</section>
 
 
-            <!-- LABORATORY 2 -->
 
-            <div class="card">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-                <div class="quiz-preview">
+<footer>
 
-                    <img src="Laboratory2.png" class="quiz-image" alt="Laboratory 2">
+    <p>
+        © 2026 John Kristan Dominguez
+    </p>
 
-                </div>
+    <p>
+        My 3D Student Portfolio
+    </p>
 
-                <h2>
-                    Laboratory 2
-                </h2>
-
-            </div>
+</footer>
 
 
-            <!-- LABORATORY 3 -->
 
-            <div class="card">
+<!-- =====================================================
+     IMAGE MODAL
+===================================================== -->
 
-                <div class="quiz-preview">
+<div
+    class="modal"
+    id="modal"
+>
 
-                    <img src="Lab3.png" class="quiz-image" alt="Lab3">
+    <div class="modal-box">
 
-                </div>
+        <button
+            class="close"
+            id="closeModal"
+        >
+            ×
+        </button>
 
-                <h2>
-                    Laboratory 3
-                </h2>
+        <h2 id="modalTitle">
+            Preview
+        </h2>
 
-            </div>
+        <div id="modalContent">
 
         </div>
 
-    </section>
+    </div>
+
+</div>
 
 
-    <!-- =========================
-         EXAM
-    ========================== -->
 
-    <section class="content" id="exam">
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
-        <h1>
-            EXAM
-        </h1>
-
-        <p>
-            My examination outputs.
-        </p>
-
-
-        <div class="cards">
-
-            <!-- PRELIM -->
-
-            <div class="card exam-card">
-
-                <h2>
-                    Prelim Exam
-                </h2>
-
-                <p>
-                    <img src="Prelim Exam.jpg" class="quiz-image" alt="Prelim Exam.jpg">
-                </p>
-
-            </div>
-
-
-            <!-- MIDTERM -->
-
-            <div class="card exam-card">
-
-                <h2>
-                    Midterm Exam
-                </h2>
-
-                <p>
-                    Midterm examination output.
-                </p>
-
-            </div>
-
-
-            <!-- FINAL -->
-
-            <div class="card exam-card">
-
-                <h2>
-                    Final Exam
-                </h2>
-
-                <p>
-                    Final examination output.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        © 2026 John Kristan Dominguez | My Portfolio
-
-    </footer>
+<script src="script.js"></script>
 
 
 </body>
