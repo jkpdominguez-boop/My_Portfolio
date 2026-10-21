@@ -1,246 +1,113 @@
-/* =====================================================
-   MOBILE MENU
-===================================================== */
 
 const menuBtn = document.getElementById("menuBtn");
-
 const navMenu = document.getElementById("navMenu");
 
+const modal = document.getElementById("previewModal");
+const modalClose = document.getElementById("modalClose");
+const modalTitle = document.getElementById("modalTitle");
+const modalContent = document.getElementById("modalContent");
 
-if (menuBtn) {
+// MOBILE NAVIGATION
 
-    menuBtn.addEventListener("click", function () {
+menuBtn.addEventListener("click", () => {
+    const isOpen = navMenu.classList.toggle("open");
 
-        navMenu.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+    );
+});
 
-    });
-
-}
-
-
-/* =====================================================
-   CLOSE MOBILE MENU WHEN CLICKING LINK
-===================================================== */
-
-const navLinks =
-    document.querySelectorAll("#navMenu a");
-
-
-navLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
+navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
         navMenu.classList.remove("open");
-
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Open navigation");
     });
-
 });
 
+// OPEN POPUP
 
-/* =====================================================
-   IMAGE MODAL
-===================================================== */
-
-const modal =
-    document.getElementById("modal");
-
-const modalTitle =
-    document.getElementById("modalTitle");
-
-const modalContent =
-    document.getElementById("modalContent");
-
-const closeModal =
-    document.getElementById("closeModal");
-
-
-function openImage(imagePath, title) {
-
+function openModal(title, element) {
     modalTitle.textContent = title;
+    modalContent.replaceChildren(element);
 
-    modalContent.innerHTML = `
-        <img
-            src="${imagePath}"
-            alt="${title}"
-            class="modal-image"
-        >
-    `;
-
-    modal.classList.add("show");
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
 
     document.body.style.overflow = "hidden";
-
+    modalClose.focus();
 }
 
+// CLOSE POPUP
 
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
+function closeModal() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
 
-if (closeModal) {
-
-    closeModal.addEventListener("click", function () {
-
-        closeTheModal();
-
-    });
-
-}
-
-
-function closeTheModal() {
-
-    modal.classList.remove("show");
-
-    modalContent.innerHTML = "";
-
+    modalContent.replaceChildren();
     document.body.style.overflow = "";
-
 }
 
+// QUIZ, LABORATORY, AND EXAM IMAGES
 
-/* =====================================================
-   CLOSE WHEN CLICKING OUTSIDE
-===================================================== */
+document.querySelectorAll("[data-image]").forEach(button => {
+    button.addEventListener("click", () => {
+        const imagePath = button.dataset.image;
+        const title = button.dataset.title || "Preview";
 
-if (modal) {
+        const image = document.createElement("img");
+        image.className = "modal-image";
+        image.alt = title;
 
-    modal.addEventListener("click", function (event) {
+        image.addEventListener("error", () => {
+            if (!modal.classList.contains("open")) return;
 
-        if (event.target === modal) {
+            const message = document.createElement("p");
+            message.className = "modal-message";
+            message.textContent =
+                `Image "${imagePath}" was not found. Check the filename and folder.`;
 
-            closeTheModal();
+            modalContent.replaceChildren(message);
+        }, { once: true });
 
-        }
-
+        image.src = imagePath;
+        openModal(title, image);
     });
+});
 
-}
+// MISSING FILE MESSAGES
 
+document.querySelectorAll("[data-message]").forEach(button => {
+    button.addEventListener("click", () => {
+        const message = document.createElement("p");
+        message.className = "modal-message";
+        message.textContent = button.dataset.message;
 
-/* =====================================================
-   ESC KEY
-===================================================== */
+        openModal(button.textContent.trim(), message);
+    });
+});
 
-document.addEventListener("keydown", function (event) {
+// CLOSE BUTTON
 
-    if (event.key === "Escape") {
+modalClose.addEventListener("click", closeModal);
 
-        closeTheModal();
+// CLOSE WHEN CLICKING OUTSIDE THE POPUP
 
+modal.addEventListener("click", event => {
+    if (event.target === modal) {
+        closeModal();
     }
-
 });
 
+// CLOSE USING ESCAPE KEY
 
-/* =====================================================
-   MESSAGE
-===================================================== */
-
-function showMessage(message) {
-
-    modalTitle.textContent = "Portfolio";
-
-    modalContent.innerHTML = `
-        <p class="message-text">
-            ${message}
-        </p>
-    `;
-
-    modal.classList.add("show");
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-/* =====================================================
-   3D CARD TILT
-===================================================== */
-
-const cards =
-    document.querySelectorAll(".tilt-card");
-
-
-cards.forEach(function (card) {
-
-    card.addEventListener("mousemove", function (event) {
-
-        const rect =
-            card.getBoundingClientRect();
-
-        const x =
-            event.clientX - rect.left;
-
-        const y =
-            event.clientY - rect.top;
-
-        const centerX =
-            rect.width / 2;
-
-        const centerY =
-            rect.height / 2;
-
-        const rotateX =
-            ((y - centerY) / centerY) * -5;
-
-        const rotateY =
-            ((x - centerX) / centerX) * 5;
-
-        card.style.transform =
-            `perspective(900px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateY(-5px)`;
-
-    });
-
-
-    card.addEventListener("mouseleave", function () {
-
-        card.style.transform =
-            "perspective(900px) rotateX(0deg) rotateY(0deg)";
-
-    });
-
-});
-
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-const revealElements =
-    document.querySelectorAll(
-        ".portfolio-card, .profile-card, .about-text, .contact-card"
-    );
-
-
-const observer =
-    new IntersectionObserver(
-        function (entries) {
-
-            entries.forEach(function (entry) {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("visible");
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.15
-        }
-
-    );
-
-
-revealElements.forEach(function (element) {
-
-    observer.observe(element);
-
+document.addEventListener("keydown", event => {
+    if (
+        event.key === "Escape" &&
+        modal.classList.contains("open")
+    ) {
+        closeModal();
+    }
 });
